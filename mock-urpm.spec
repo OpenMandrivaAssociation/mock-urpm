@@ -1,6 +1,6 @@
 # next four lines substituted by autoconf
 %define version 1.1.12
-%define release 2
+%define release 3
 %define name mock-urpm
 %define modname mock_urpm
 %define target_release Mandriva-2011
@@ -10,7 +10,7 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 License: GPLv2+
-Group: System/Configuration/Packaging
+Group: Development/Other
 Source: %{name}-%{version}.tar.gz
 URL: http://wiki.mandriva.com/en/Mock-urpm
 
@@ -19,6 +19,7 @@ Requires: tar
 Requires: pigz
 Requires: python-ctypes
 Requires: python-decoratortools
+Requires: usermode-consoleonly
 Requires(pre): shadow-utils
 Requires(post): coreutils
 BuildRequires: python-devel
@@ -59,9 +60,12 @@ if [ -e %{_sysconfdir}/%{name}/$cfg ] ; then
 #    echo "Please, create a symlink for the correct one to %{_sysconfdir}/%{name}/default.cfg"
 fi
 
+ln -s %{_bindir}/consolehelper %{_bindir}/%{name} 
+
 %postun
 rm -f %{_sysconfdir}/bash_completion.d/%{name}
 rm -f $cfg %{_sysconfdir}/%{name}/default.cfg
+rm -f %{_bindir}/%{name} 
 groupdel %{name} >/dev/null 2>&1 || :
 
 %files
@@ -69,6 +73,10 @@ groupdel %{name} >/dev/null 2>&1 || :
 
 # executables
 %{_sbindir}/%{name}
+
+#consolehelper and PAM
+%{_sysconfdir}/pam.d/%{name}
+%{_sysconfdir}/security/console.apps/%{name}
 
 # python stuff
 %dir %{python_sitelib}/%{modname}
