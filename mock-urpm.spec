@@ -23,12 +23,14 @@ Requires: usermode-consoleonly
 Requires(pre): shadow-utils
 Requires(post): coreutils
 BuildRequires: python-devel
+BuildRequires: shadow-utils
+BuildRoot:  %{name}-%{version}
 
 %description
 Mock takes an SRPM and builds it in a chroot
 
 %prep
-%setup -q -n %{name}
+%setup -q -n %{name}-%{version}
 
 %install
 make install DESTDIR=$RPM_BUILD_ROOT
