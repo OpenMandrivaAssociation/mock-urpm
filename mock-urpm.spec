@@ -1,6 +1,6 @@
 # next four lines substituted by autoconf
 %define version 1.1.12
-%define release 3
+%define release 5
 %define name mock-urpm
 %define modname mock_urpm
 %define target_release Mandriva-2011
