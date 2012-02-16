@@ -1,14 +1,10 @@
-# next four lines substituted by autoconf
-%define version 1.1.12
-%define release 5
-%define name mock-urpm
 %define modname mock_urpm
 %define target_release Mandriva-2011
 
 Summary: Builds packages inside chroots
-Name: %{name}
-Version: %{version}
-Release: %{release}
+Name: mock-urpm
+Version: 1.1.12
+Release: 6
 License: GPLv2+
 Group: Development/Other
 Source: %{name}-%{version}.tar.gz
