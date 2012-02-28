@@ -4,7 +4,7 @@
 Summary: Builds packages inside chroots
 Name: mock-urpm
 Version: 1.1.12
-Release: 6
+Release: 7
 License: GPLv2+
 Group: Development/Other
 Source: %{name}-%{version}.tar.gz
@@ -43,7 +43,7 @@ if [ $1 -eq 1 ]; then
 fi
 
 %post
-ln -s %{_datadir}/bash-completion/%{name} %{_sysconfdir}/bash_completion.d/%{name}
+ln -s -f %{_datadir}/bash-completion/%{name} %{_sysconfdir}/bash_completion.d/%{name}
 
 arch=$(uname -i)
 #make no difference between x86 32bit architectures
@@ -52,13 +52,13 @@ if [[ $arch =~ i.86 ]]; then
 fi
 cfg=%{target_release}-$arch.cfg
 if [ -e %{_sysconfdir}/%{name}/$cfg ] ; then
-    ln -s $cfg %{_sysconfdir}/%{name}/default.cfg
+    ln -s -f $cfg %{_sysconfdir}/%{name}/default.cfg
 #else
 #    echo "Failed resolving a correct default configuration file" 
 #    echo "Please, create a symlink for the correct one to %{_sysconfdir}/%{name}/default.cfg"
 fi
 
-ln -s %{_bindir}/consolehelper %{_bindir}/%{name} 
+ln -s -f %{_bindir}/consolehelper %{_bindir}/%{name} 
 
 %postun
 rm -f %{_sysconfdir}/bash_completion.d/%{name}
