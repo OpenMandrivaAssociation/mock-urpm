@@ -4,7 +4,7 @@
 Summary: Builds packages inside chroots
 Name: mock-urpm
 Version: 1.1.12
-Release: 7
+Release: 8
 License: GPLv2+
 Group: Development/Other
 Source: %{name}-%{version}.tar.gz
@@ -16,8 +16,8 @@ Requires: pigz
 Requires: python-ctypes
 Requires: python-decoratortools
 Requires: usermode-consoleonly
-Requires(pre): shadow-utils
-Requires(post): coreutils
+Requires: shadow-utils
+Requires: coreutils
 BuildRequires: python-devel
 BuildRequires: shadow-utils
 BuildRoot:  %{name}-%{version}
@@ -53,9 +53,6 @@ fi
 cfg=%{target_release}-$arch.cfg
 if [ -e %{_sysconfdir}/%{name}/$cfg ] ; then
     ln -s -f $cfg %{_sysconfdir}/%{name}/default.cfg
-#else
-#    echo "Failed resolving a correct default configuration file" 
-#    echo "Please, create a symlink for the correct one to %{_sysconfdir}/%{name}/default.cfg"
 fi
 
 ln -s -f %{_bindir}/consolehelper %{_bindir}/%{name} 
@@ -86,8 +83,8 @@ groupdel %{name} >/dev/null 2>&1 || :
 %{_datadir}/bash-completion/%{name} 
 
 # config files
-%config(noreplace) %{_sysconfdir}/%{name}/logging.ini
-%config(noreplace) %{_sysconfdir}/%{name}/*.cfg
+%config %{_sysconfdir}/%{name}/logging.ini
+%config %{_sysconfdir}/%{name}/*.cfg
 
 #plugins
 %dir %{python_sitelib}/%{modname}/plugins
