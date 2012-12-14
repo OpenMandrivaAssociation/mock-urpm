@@ -3,14 +3,13 @@
 Summary: Builds packages inside chroots
 Name: mock-urpm
 Version: 1.1.12
-Release: 15
+Release: 16
 License: GPLv2+
 Group: Development/Other
-Source: %{name}-%{version}.tar.gz
+Source0: %{name}-%{version}.tar.gz
 URL: http://wiki.rosalab.ru/en/index.php/Mock-urpm
 
 BuildArch:      noarch
-BuildRoot:      %{name}-%{version}
 Requires:       tar
 Requires:       pigz
 Requires:       python-ctypes
