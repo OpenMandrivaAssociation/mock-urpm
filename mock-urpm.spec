@@ -1,32 +1,31 @@
 %define modname mock_urpm
 
-Summary: Builds packages inside chroots
-Name: mock-urpm
-Version: 1.1.12
-Release: 25
-License: GPLv2+
-Group: Development/Other
-Source: %{name}-%{version}.tar.gz
-Patch1: mock-urpm.urpm_options.patch
-URL: http://wiki.rosalab.ru/en/index.php/Mock-urpm
+Summary:	Builds packages inside chroots
+Name:		mock-urpm
+Version:	1.1.12
+Release:	25
+License:	GPLv2+
+Group:		Development/Other
+Source:		%{name}-%{version}.tar.gz
+Patch1:		mock-urpm.urpm_options.patch
+URL:		http://wiki.rosalab.ru/en/index.php/Mock-urpm
 
-BuildArch:      noarch
-BuildRoot:      %{name}-%{version}
-Requires:       tar
-Requires:       pigz
-Requires:       python-ctypes
-Requires:       python-decoratortools
-Requires:       usermode-consoleonly
-Requires:       shadow-utils
-Requires:       coreutils
-Requires:       python-rpm
-Requires:       rpm-build
-BuildRequires:  python-devel
-BuildRequires:  shadow-utils
+BuildArch:	noarch
+Requires:	tar
+Requires:	pigz
+Requires:	python-ctypes
+Requires:	python-decoratortools
+Requires:	usermode-consoleonly
+Requires:	shadow-utils
+Requires:	coreutils
+Requires:	python-rpm
+Requires:	rpm-build
+BuildRequires:	python-devel
+BuildRequires:	shadow-utils
 
 
 %description
-Mock-urpm takes an SRPM and builds it in a chroot
+Mock-urpm takes an SRPM and builds it in a chroot.
 
 %prep
 %setup -q -n %{name}
