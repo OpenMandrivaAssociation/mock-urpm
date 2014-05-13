@@ -3,11 +3,13 @@
 Summary:	Builds packages inside chroots
 Name:		mock-urpm
 Version:	1.1.12
-Release:	25
+Release:	30
 License:	GPLv2+
 Group:		Development/Other
 Source:		%{name}-%{version}.tar.gz
 Patch1:		mock-urpm.urpm_options.patch
+Patch2:         mock-urpm.test.patch
+Patch3:         mock-urpm.readd.patch
 URL:		http://wiki.rosalab.ru/en/index.php/Mock-urpm
 
 BuildArch:	noarch
