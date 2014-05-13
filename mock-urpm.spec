@@ -3,7 +3,7 @@
 Summary:	Builds packages inside chroots
 Name:		mock-urpm
 Version:	1.1.12
-Release:	30
+Release:	31
 License:	GPLv2+
 Group:		Development/Other
 Source:		%{name}-%{version}.tar.gz
@@ -32,6 +32,8 @@ Mock-urpm takes an SRPM and builds it in a chroot.
 %prep
 %setup -q -n %{name}
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %install
 make install DESTDIR=%{buildroot}
