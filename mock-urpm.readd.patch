@@ -1,0 +1,75 @@
+diff -Nur mock-urpm.old/py/mock_urpm/backend.py mock-urpm/py/mock_urpm/backend.py
+--- mock-urpm.old/py/mock_urpm/backend.py	2014-05-12 10:49:48.000000000 +0400
++++ mock-urpm/py/mock_urpm/backend.py	2014-05-08 16:31:41.000000000 +0400
+@@ -160,7 +160,40 @@
+         self._unlock_and_rm_chroot()
+         self.chrootWasCleaned = True
+         self.unlockBuildRoot()
++        
++    decorate(traceLog())
++    def readdrepo(self):
++            if self.use_system_media:
++                self.root_log.debug("Copying urpmi config...")
++                chrootpath = self.makeChrootPath() + self.urpmi_config_dir
++                mock_urpm.util.rmtree(self.makeChrootPath("/etc/urpmi"), selinux=self.selinux)
++                shutil.copytree(self.urpmi_config_dir, chrootpath)
++
++            self.root_log.debug("Adding media...")
++            urpmicmd = [self.urpmi_addmedia_path]
++            urpmicmd.extend(self.urpm_options.split())
++            urpmicmd.extend(('--urpmi-root', self.makeChrootPath()))
++
++            for medium in self.urpmi_media:
++                self.root_log.debug( "Adding medium %s: %s" %(medium, self.urpmi_media[medium]))
++                try:
++                    mock_urpm.util.do(urpmicmd + [medium, self.urpmi_media[medium]], returnOutput=1, verbose=self.verbose)
++                except mock_urpm.exception.Error, e:
++                    raise mock_urpm.exception.UrpmiError, str(e)
++
++            urpmicmd += ['--distrib']
++            for medium in self.urpmi_media_distrib:
++                self.root_log.debug( "Adding distrib media from %s" %medium)
++                try:
++                    mock_urpm.util.do(urpmicmd + [medium], returnOutput=0, verbose=self.verbose)
++                except mock_urpm.exception.Error, e:
++                    raise mock_urpm.exception.UrpmiError, str(e)
+ 
++            c = ['urpmi.update', '-a',  '--urpmi-root', self.makeChrootPath()]
++            c.extend(self.urpm_options.split())
++            mock_urpm.util.do(c, returnOutput=1, verbose=self.verbose)                
++                
++###################
+     decorate(traceLog())
+     def _unlock_and_rm_chroot(self):
+         if not os.path.exists(self.basedir):
+diff -Nur mock-urpm.old/py/sbin/mock-urpm.py mock-urpm/py/sbin/mock-urpm.py
+--- mock-urpm.old/py/sbin/mock-urpm.py	2013-02-12 15:21:34.000000000 +0400
++++ mock-urpm/py/sbin/mock-urpm.py	2014-05-08 15:58:33.000000000 +0400
+@@ -27,6 +27,7 @@
+            mock-urpm [options] --installdeps {SRPM|RPM}
+            mock-urpm [options] --install PACKAGE
+            mock-urpm [options] --copyin path [..path] destination
++           mock-urpm [options] --readdrepo
+            mock-urpm [options] --copyout path [..path] destination
+            mock-urpm [options] --scm-enable [--scm-option key=value]
+ """
+@@ -124,6 +125,10 @@
+                       dest="mode",
+                       help="Copy file(s) into the specified chroot")
+ 
++    parser.add_option("--readdrepo", action="store_const", const="readdrepo",
++                      dest="mode",
++                      help="Add repositories from default config from scratch")      
++
+     parser.add_option("--copyout", action="store_const", const="copyout",
+                       dest="mode",
+                       help="Copy file(s) from the specified chroot")
+@@ -825,6 +830,8 @@
+ 
+     elif options.mode == 'orphanskill':
+         mock_urpm.util.orphansKill(chroot.makeChrootPath())
++    elif options.mode == 'readdrepo':    
++        chroot.readdrepo()       
+     elif options.mode == 'copyin':
+         chroot.tryLockBuildRoot()
+         chroot._resetLogging()

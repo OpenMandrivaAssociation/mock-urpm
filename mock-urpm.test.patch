@@ -1,0 +1,172 @@
+diff -Nur mock-urpm.old/etc/mock-urpm/Mandriva-2011-i586.cfg mock-urpm/etc/mock-urpm/Mandriva-2011-i586.cfg
+--- mock-urpm.old/etc/mock-urpm/Mandriva-2011-i586.cfg	2014-02-13 16:29:21.000000000 +0400
++++ mock-urpm/etc/mock-urpm/Mandriva-2011-i586.cfg	2014-02-13 19:10:43.846511753 +0400
+@@ -2,7 +2,7 @@
+ config_opts['target_arch'] = 'i586'
+ config_opts['legal_host_arches'] = ('i586', 'i686')
+ 
+-config_opts['chroot_setup'] = 'basesystem-minimal locales locales-en locales-de locales-uk locales-es locales-ru basesystem-minimal libmpc2 libmpfr4 libnatspec0 libpwl5 make patch unzip mandriva-release-common binutils curl gcc gcc-c++ gnupg mandriva-release-Free rpm-build'
++config_opts['chroot_setup'] = 'basesystem-minimal locales locales-en locales-de locales-uk locales-es locales-ru basesystem-minimal libmpc2 libmpfr4 libnatspec0 libpwl5 make patch unzip mandriva-release-common binutils curl gcc gcc-c++ gnupg mandriva-release-Free rpm-build urpmi'
+ config_opts['urpmi_options'] = '--no-suggests --no-verify-rpm'
+ config_opts['urpm_options'] = ''
+ 
+diff -Nur mock-urpm.old/etc/mock-urpm/Mandriva-2011-x86_64.cfg mock-urpm/etc/mock-urpm/Mandriva-2011-x86_64.cfg
+--- mock-urpm.old/etc/mock-urpm/Mandriva-2011-x86_64.cfg	2014-02-13 16:29:21.000000000 +0400
++++ mock-urpm/etc/mock-urpm/Mandriva-2011-x86_64.cfg	2014-02-13 19:10:48.240511928 +0400
+@@ -2,7 +2,7 @@
+ config_opts['target_arch'] = 'x86_64'
+ config_opts['legal_host_arches'] = ('i586', 'i686', 'x86_64')
+ 
+-config_opts['chroot_setup'] = 'basesystem-minimal locales locales-en locales-de locales-uk locales-es locales-ru basesystem-minimal lib64mpc2 lib64mpfr4 lib64natspec0 lib64pwl5 make patch unzip mandriva-release-common binutils curl gcc gcc-c++ gnupg mandriva-release-Free rpm-build'
++config_opts['chroot_setup'] = 'basesystem-minimal locales locales-en locales-de locales-uk locales-es locales-ru basesystem-minimal lib64mpc2 lib64mpfr4 lib64natspec0 lib64pwl5 make patch unzip mandriva-release-common binutils curl gcc gcc-c++ gnupg mandriva-release-Free rpm-build urpmi'
+ config_opts['urpmi_options'] = '--no-suggests --no-verify-rpm'
+ config_opts['urpm_options'] = ''
+ 
+diff -Nur mock-urpm.old/etc/mock-urpm/Mandriva-cooker-i586.cfg mock-urpm/etc/mock-urpm/Mandriva-cooker-i586.cfg
+--- mock-urpm.old/etc/mock-urpm/Mandriva-cooker-i586.cfg	2014-02-13 16:29:21.000000000 +0400
++++ mock-urpm/etc/mock-urpm/Mandriva-cooker-i586.cfg	2014-02-13 19:10:55.359512211 +0400
+@@ -2,7 +2,7 @@
+ config_opts['target_arch'] = 'i586'
+ config_opts['legal_host_arches'] = ('i586', 'i686', 'x86_64')
+ 
+-config_opts['chroot_setup'] = 'basesystem-minimal locales locales-en locales-de locales-uk locales-es locales-ru basesystem-minimal libmpc3 libmpfr4 libnatspec0 libpwl5 make patch unzip mandriva-release-common binutils curl gcc gcc-c++ gnupg rpm-build'
++config_opts['chroot_setup'] = 'basesystem-minimal locales locales-en locales-de locales-uk locales-es locales-ru basesystem-minimal libmpc3 libmpfr4 libnatspec0 libpwl5 make patch unzip mandriva-release-common binutils curl gcc gcc-c++ gnupg rpm-build urpmi'
+ config_opts['urpmi_options'] = '--no-suggests --no-verify-rpm'
+ config_opts['urpm_options'] = ''
+ 
+diff -Nur mock-urpm.old/etc/mock-urpm/Mandriva-cooker-x86_64.cfg mock-urpm/etc/mock-urpm/Mandriva-cooker-x86_64.cfg
+--- mock-urpm.old/etc/mock-urpm/Mandriva-cooker-x86_64.cfg	2014-02-13 16:29:21.000000000 +0400
++++ mock-urpm/etc/mock-urpm/Mandriva-cooker-x86_64.cfg	2014-02-13 19:11:00.191512403 +0400
+@@ -2,7 +2,7 @@
+ config_opts['target_arch'] = 'x86_64'
+ config_opts['legal_host_arches'] = ('i586', 'i686', 'x86_64')
+ 
+-config_opts['chroot_setup'] = 'basesystem-minimal locales locales-en locales-de locales-uk locales-es locales-ru basesystem-minimal lib64mpc3 lib64mpfr4 lib64natspec0 lib64pwl5 make patch unzip mandriva-release-common binutils curl gcc gcc-c++ gnupg rpm-build'
++config_opts['chroot_setup'] = 'basesystem-minimal locales locales-en locales-de locales-uk locales-es locales-ru basesystem-minimal lib64mpc3 lib64mpfr4 lib64natspec0 lib64pwl5 make patch unzip mandriva-release-common binutils curl gcc gcc-c++ gnupg rpm-build urpmi'
+ 
+ config_opts['urpmi_options'] = '--no-suggests --no-verify-rpm'
+ config_opts['urpm_options'] = ''
+diff -Nur mock-urpm.old/etc/mock-urpm/Rosa-2012.1-i586.cfg mock-urpm/etc/mock-urpm/Rosa-2012.1-i586.cfg
+--- mock-urpm.old/etc/mock-urpm/Rosa-2012.1-i586.cfg	2014-02-13 16:29:21.000000000 +0400
++++ mock-urpm/etc/mock-urpm/Rosa-2012.1-i586.cfg	2014-02-13 19:11:04.559512577 +0400
+@@ -2,7 +2,7 @@
+ config_opts['target_arch'] = 'i586'
+ config_opts['legal_host_arches'] = ('i586', 'i686', 'x86_64')
+ 
+-config_opts['chroot_setup'] = 'basesystem-minimal locales locales-en locales-de locales-uk locales-es locales-ru basesystem-minimal libmpc2 libmpfr4 libnatspec0 libpwl5 make patch unzip mandriva-release-common binutils curl gcc gcc-c++ gnupg rpm-build'
++config_opts['chroot_setup'] = 'basesystem-minimal locales locales-en locales-de locales-uk locales-es locales-ru basesystem-minimal libmpc2 libmpfr4 libnatspec0 libpwl5 make patch unzip mandriva-release-common binutils curl gcc gcc-c++ gnupg rpm-build urpmi'
+ config_opts['urpmi_options'] = '--no-suggests --no-verify-rpm'
+ config_opts['urpm_options'] = ''
+ 
+diff -Nur mock-urpm.old/etc/mock-urpm/Rosa-2012.1-x86_64.cfg mock-urpm/etc/mock-urpm/Rosa-2012.1-x86_64.cfg
+--- mock-urpm.old/etc/mock-urpm/Rosa-2012.1-x86_64.cfg	2014-02-13 16:29:21.000000000 +0400
++++ mock-urpm/etc/mock-urpm/Rosa-2012.1-x86_64.cfg	2014-02-13 19:11:08.646512740 +0400
+@@ -2,7 +2,7 @@
+ config_opts['target_arch'] = 'x86_64'
+ config_opts['legal_host_arches'] = ('i586', 'i686', 'x86_64')
+ 
+-config_opts['chroot_setup'] = 'basesystem-minimal locales locales-en locales-de locales-uk locales-es locales-ru basesystem-minimal lib64mpc2 lib64mpfr4 lib64natspec0 lib64pwl5 make patch unzip mandriva-release-common binutils curl gcc gcc-c++ gnupg rpm-build'
++config_opts['chroot_setup'] = 'basesystem-minimal locales locales-en locales-de locales-uk locales-es locales-ru basesystem-minimal lib64mpc2 lib64mpfr4 lib64natspec0 lib64pwl5 make patch unzip mandriva-release-common binutils curl gcc gcc-c++ gnupg rpm-build urpmi'
+ config_opts['urpmi_options'] = '--no-suggests --no-verify-rpm'
+ config_opts['urpm_options'] = ''
+ 
+diff -Nur mock-urpm.old/etc/mock-urpm/Rosa-2012lts-i586.cfg mock-urpm/etc/mock-urpm/Rosa-2012lts-i586.cfg
+--- mock-urpm.old/etc/mock-urpm/Rosa-2012lts-i586.cfg	2014-02-13 16:29:21.000000000 +0400
++++ mock-urpm/etc/mock-urpm/Rosa-2012lts-i586.cfg	2014-02-13 19:11:12.782512905 +0400
+@@ -2,7 +2,7 @@
+ config_opts['target_arch'] = 'i586'
+ config_opts['legal_host_arches'] = ('i586', 'i686', 'x86_64')
+ 
+-config_opts['chroot_setup'] = 'basesystem-minimal locales locales-en locales-de locales-uk locales-es locales-ru basesystem-minimal libmpc2 libmpfr4 libnatspec0 libpwl5 make patch unzip mandriva-release-common binutils curl gcc gcc-c++ gnupg mandriva-release-Free rpm-build'
++config_opts['chroot_setup'] = 'basesystem-minimal locales locales-en locales-de locales-uk locales-es locales-ru basesystem-minimal libmpc2 libmpfr4 libnatspec0 libpwl5 make patch unzip mandriva-release-common binutils curl gcc gcc-c++ gnupg mandriva-release-Free rpm-build urpmi'
+ config_opts['urpmi_options'] = '--no-suggests --no-verify-rpm'
+ config_opts['urpm_options'] = ''
+ 
+diff -Nur mock-urpm.old/etc/mock-urpm/Rosa-2012lts-x86_64.cfg mock-urpm/etc/mock-urpm/Rosa-2012lts-x86_64.cfg
+--- mock-urpm.old/etc/mock-urpm/Rosa-2012lts-x86_64.cfg	2014-02-13 16:29:21.000000000 +0400
++++ mock-urpm/etc/mock-urpm/Rosa-2012lts-x86_64.cfg	2014-02-13 19:11:16.855513067 +0400
+@@ -2,7 +2,7 @@
+ config_opts['target_arch'] = 'x86_64'
+ config_opts['legal_host_arches'] = ('i586', 'i686', 'x86_64')
+ 
+-config_opts['chroot_setup'] = 'basesystem-minimal locales locales-en locales-de locales-uk locales-es locales-ru basesystem-minimal lib64mpc2 lib64mpfr4 lib64natspec0 lib64pwl5 make patch unzip mandriva-release-common binutils curl gcc gcc-c++ gnupg mandriva-release-Free rpm-build'
++config_opts['chroot_setup'] = 'basesystem-minimal locales locales-en locales-de locales-uk locales-es locales-ru basesystem-minimal lib64mpc2 lib64mpfr4 lib64natspec0 lib64pwl5 make patch unzip mandriva-release-common binutils curl gcc gcc-c++ gnupg mandriva-release-Free rpm-build urpmi'
+ config_opts['urpmi_options'] = '--no-suggests --no-verify-rpm'
+ config_opts['urpm_options'] = ''
+ 
+diff -Nur mock-urpm.old/py/mock_urpm/backend.py mock-urpm/py/mock_urpm/backend.py
+--- mock-urpm.old/py/mock_urpm/backend.py	2014-02-13 16:29:21.000000000 +0400
++++ mock-urpm/py/mock_urpm/backend.py	2014-02-13 16:27:56.000000000 +0400
+@@ -524,7 +524,7 @@
+             self.uidManager.becomeUser(0, 0)
+ 
+             def _urpmi_and_check(cmd):
+-                output = self._urpmi(cmd, returnOutput=1)
++                output = self._urpmi_chroot(cmd, returnOutput=1)
+                 for line in output.split('\n'):
+                     if line.lower().find('No Package found for'.lower()) != -1:
+                         raise mock_urpm.exception.BuildError, "Bad build req: %s. Exiting." % line
+@@ -541,9 +541,10 @@
+                 _urpmi_and_check(args)
+                 # nothing made us exit, so we continue
+                 args[0] = '--auto'
+-                self._urpmi(args, returnOutput=1)
++                self._urpmi_chroot(args, returnOutput=1)
+ 
+             # install actual build dependencies
++            srpms = [x.replace(self.makeChrootPath(), '') for x in srpms]
+             _urpmi_and_check(['--buildrequires', '--auto'] + list(srpms))
+         finally:
+             self.uidManager.restorePrivs()
+@@ -599,6 +600,7 @@
+                 raise mock_urpm.exception.PkgError, "Expected to find single rebuilt srpm, found %d." % len(rebuiltSrpmFile)
+ 
+             rebuiltSrpmFile = rebuiltSrpmFile[0]
++
+             self.installSrpmDeps(rebuiltSrpmFile)
+ 
+             #have to permanently drop privs or rpmbuild regains them
+@@ -812,6 +814,43 @@
+             return output
+         except mock_urpm.exception.Error, e:
+             raise mock_urpm.exception.UrpmiError, str(e)
++####new
++    decorate(traceLog())
++    def _urpmi_chroot(self, cmd, returnOutput=0):
++        """use urpmi to install packages/package groups into the chroot"""
++        urpmicmd = [self.urpmi_path]
++        urpmicmd.extend(self.urpmi_options.split())
++        #cmdix = 0
++        # invoke yum-builddep instead of yum if cmd is builddep
++        #if cmd[0] == "--buildrequires":
++        #    urpmicmd[0] = self.builddep_path
++        #    cmdix = 1
++#        urpmicmd.extend(('--root', self.makeChrootPath()))
++#        self.chrootpathx = self.makeChrootPath()
++        urpmicmd.insert(0, self.makeChrootPath())
++        urpmicmd.insert(0, '/usr/sbin/chroot')
++        print urpmicmd
++#        urpmicmd.extend(('--urpmi-root', self.makeChrootPath()))
++        # TODO: urpmicmd.extend(('--urpmi-root', self.makeChrootPath()))
++
++        ###if not self.online:
++        ###    urpmicmd.append("-C")
++        urpmicmd.extend(cmd[:])
++        self.root_log.debug(urpmicmd)
++        output = ""
++        if self.verbose == 0:
++            q = True
++        else:
++            q = False
++        try:
++            self._callHooks("preurpmi")
++
++            output = mock_urpm.util.do(urpmicmd, returnOutput=returnOutput, quiet=q, verbose=self.verbose)
++            self._callHooks("posturpmi")
++            return output
++        except mock_urpm.exception.Error, e:
++            raise mock_urpm.exception.UrpmiError, str(e)
++####new
+ 
+     decorate(traceLog())
+     def _makeBuildUser(self):
