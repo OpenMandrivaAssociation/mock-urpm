@@ -3,7 +3,7 @@
 Summary:	Builds packages inside chroots
 Name:		mock-urpm
 Version:	1.1.12
-Release:	33
+Release:	34
 License:	GPLv2+
 Group:		Development/Other
 Source0:	%{name}-%{version}.tar.gz
@@ -20,9 +20,10 @@ Requires:	python-decoratortools
 Requires:	usermode-consoleonly
 Requires:	shadow-utils
 Requires:	coreutils
+Requires:	python2
 Requires:	python-rpm
 Requires:	rpm-build
-BuildRequires:	python-devel
+BuildRequires:	pkgconfig(python2)
 BuildRequires:	shadow-utils
 
 
@@ -34,9 +35,11 @@ Mock-urpm takes an SRPM and builds it in a chroot.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+# Until we get python3 support...
+sed -i -e 's,/bin/python,/bin/python2,g' py/sbin/*.py
 
 %install
-make install DESTDIR=%{buildroot}
+make install DESTDIR=%{buildroot} PYTHON=python2
 mkdir -p %{buildroot}/%{_bindir}
 ln -s %{_bindir}/consolehelper %{buildroot}/%{_bindir}/%{name}
 ln -s %{_datadir}/bash-completion/%{name} %{buildroot}/%{_sysconfdir}/bash_completion.d/%{name}
@@ -68,9 +71,9 @@ fi
 
 
 # python stuff
-%dir %{python_sitelib}/%{modname}
-%{python_sitelib}/%{modname}/*.py
-%{python_sitelib}/%{modname}/*.pyc
+%dir %{python2_sitelib}/%{modname}
+%{python2_sitelib}/%{modname}/*.py
+%{python2_sitelib}/%{modname}/*.pyc
 
 #bash_completion files
 %{_datadir}/bash-completion/%{name} 
@@ -81,9 +84,9 @@ fi
 %config %{_sysconfdir}/%{name}/*.cfg
 
 #plugins
-%dir %{python_sitelib}/%{modname}/plugins
-%{python_sitelib}/%{modname}/plugins/*.py
-%{python_sitelib}/%{modname}/plugins/*.pyc
+%dir %{python2_sitelib}/%{modname}/plugins
+%{python2_sitelib}/%{modname}/plugins/*.py
+%{python2_sitelib}/%{modname}/plugins/*.pyc
 
 # docs
 %{_mandir}/man1/%{name}.1*
