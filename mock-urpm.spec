@@ -3,7 +3,7 @@
 Summary:	Builds packages inside chroots
 Name:		mock-urpm
 Version:	1.1.12
-Release:	34
+Release:	35
 License:	GPLv2+
 Group:		Development/Other
 Source0:	%{name}-%{version}.tar.gz
