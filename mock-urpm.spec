@@ -2,14 +2,11 @@
 
 Summary:	Builds packages inside chroots
 Name:		mock-urpm
-Version:	1.1.12
-Release:	36
+Version:	1.2.1
+Release:	1
 License:	GPLv2+
 Group:		Development/Other
-Source0:	%{name}-%{version}.tar.gz
-Patch1:		mock-urpm.urpm_options.patch
-Patch2:		mock-urpm.test.patch
-Patch3:		mock-urpm.readd.patch
+Source0:        https://abf.io/soft/%{name}/archive/%{name}-%{version}.tar.gz
 URL:		http://wiki.rosalab.ru/en/index.php/Mock-urpm
 
 BuildArch:	noarch
@@ -32,14 +29,11 @@ Mock-urpm takes an SRPM and builds it in a chroot.
 
 %prep
 %setup -q -n %{name}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 # Until we get python3 support...
 sed -i -e 's,/bin/python,/bin/python2,g' py/sbin/*.py
 
 %install
-make install DESTDIR=%{buildroot} PYTHON=python2
+%makeinstall_std PYTHON=python2
 mkdir -p %{buildroot}/%{_bindir}
 ln -s %{_bindir}/consolehelper %{buildroot}/%{_bindir}/%{name}
 ln -s %{_datadir}/bash-completion/%{name} %{buildroot}/%{_sysconfdir}/bash_completion.d/%{name}
@@ -59,16 +53,12 @@ if [ $1 -eq 0 ]; then # complete removing
 fi
 
 %files
-#%defattr(-,root,root,-)
-
-# executables
 %{_sbindir}/%{name}
 %{_bindir}/%{name}
 
 #consolehelper and PAM
 %{_sysconfdir}/pam.d/%{name}
 %{_sysconfdir}/security/console.apps/%{name}
-
 
 # python stuff
 %dir %{python2_sitelib}/%{modname}
