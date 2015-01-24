@@ -28,7 +28,7 @@ BuildRequires:	shadow-utils
 Mock-urpm takes an SRPM and builds it in a chroot.
 
 %prep
-%setup -q -n %{name}
+%setup -q
 # Until we get python3 support...
 sed -i -e 's,/bin/python,/bin/python2,g' py/sbin/*.py
 
