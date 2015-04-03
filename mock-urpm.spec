@@ -2,11 +2,11 @@
 
 Summary:	Builds packages inside chroots
 Name:		mock-urpm
-Version:	1.2.1
+Version:	1.3.1
 Release:	1
 License:	GPLv2+
 Group:		Development/Other
-Source0:        https://abf.io/soft/%{name}/archive/%{name}-%{version}.tar.gz
+Source0:	https://abf.io/soft/%{name}/archive/%{name}-%{version}.tar.gz
 URL:		http://wiki.rosalab.ru/en/index.php/Mock-urpm
 
 BuildArch:	noarch
