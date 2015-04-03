@@ -1,4 +1,3 @@
-removed_sources:
-  mock-urpm-1.1.12.tar.gz: 7a87c701f1f452cdf0e119823ec5cea83a4009d7
+---
 sources:
-  mock-urpm-1.2.1.tar.gz: 9acab4cbe02aeb563d943119f2db117775ed43f9
+
