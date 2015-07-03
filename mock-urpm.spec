@@ -3,7 +3,7 @@
 Summary:	Builds packages inside chroots
 Name:		mock-urpm
 Version:	1.3.10
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Development/Other
 Source0:	https://abf.io/soft/%{name}/archive/%{name}-%{version}.tar.gz
@@ -14,6 +14,7 @@ BuildArch:	noarch
 Requires:	bsdtar
 Requires:	pigz
 Requires:	python-ctypes
+Requires:	python-pexpect
 Requires:	python-decoratortools
 Requires:	usermode-consoleonly
 Requires:	python2
