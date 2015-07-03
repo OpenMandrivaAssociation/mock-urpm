@@ -14,7 +14,7 @@ BuildArch:	noarch
 Requires:	bsdtar
 Requires:	pigz
 Requires:	python-ctypes
-Requires:	python-pexpect
+Requires:	python2-pexpect
 Requires:	python-decoratortools
 Requires:	usermode-consoleonly
 Requires:	python2
