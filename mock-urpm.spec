@@ -2,26 +2,26 @@
 
 Summary:	Builds packages inside chroots
 Name:		mock-urpm
-Version:	1.3.1
+Version:	1.3.10
 Release:	1
 License:	GPLv2+
 Group:		Development/Other
 Source0:	https://abf.io/soft/%{name}/archive/%{name}-%{version}.tar.gz
 URL:		http://wiki.rosalab.ru/en/index.php/Mock-urpm
-
+BuildRequires:	pkgconfig(python2)
+BuildRequires:	shadow
 BuildArch:	noarch
 Requires:	bsdtar
 Requires:	pigz
 Requires:	python-ctypes
 Requires:	python-decoratortools
 Requires:	usermode-consoleonly
-Requires:	shadow-utils
-Requires:	coreutils
 Requires:	python2
 Requires:	python-rpm
 Requires:	rpm-build
-BuildRequires:	pkgconfig(python2)
-BuildRequires:	shadow-utils
+Requires(pre):	coreutils
+Requires(pre):	shadow
+
 
 
 %description
