@@ -1,0 +1,11 @@
+diff -Nur mock-urpm.old/py/mock_urpm/backend.py mock-urpm/py/mock_urpm/backend.py
+--- mock-urpm.old/py/mock_urpm/backend.py	2014-05-14 14:21:04.000000000 +0400
++++ mock-urpm/py/mock_urpm/backend.py	2014-05-14 14:21:42.990466168 +0400
+@@ -490,6 +490,7 @@
+         os.symlink("/proc/self/fd/0", self.makeChrootPath("dev/stdin"))
+         os.symlink("/proc/self/fd/1", self.makeChrootPath("dev/stdout"))
+         os.symlink("/proc/self/fd/2", self.makeChrootPath("dev/stderr"))
++        os.symlink("/dev/loop-control", self.makeChrootPath("dev/loop-control"))
+ 
+         os.chown(self.makeChrootPath('dev/tty'), pwd.getpwnam('root')[2], grp.getgrnam('tty')[2])
+         os.chown(self.makeChrootPath('dev/ptmx'), pwd.getpwnam('root')[2], grp.getgrnam('tty')[2])

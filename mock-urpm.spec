@@ -8,6 +8,10 @@ License:	GPLv2+
 Group:		Development/Other
 Source0:	https://abf.io/soft/%{name}/archive/%{name}-%{version}.tar.gz
 URL:		http://wiki.rosalab.ru/en/index.php/Mock-urpm
+Patch0:		site-defaults.patch
+Patch1:		mock-urpm.loop-control.patch
+Patch2:		mock-urpm-umount-proc-when-cleaning-tmp.patch
+
 BuildRequires:	pkgconfig(python2)
 BuildRequires:	shadow
 BuildArch:	noarch
@@ -30,11 +34,12 @@ Mock-urpm takes an SRPM and builds it in a chroot.
 
 %prep
 %setup -q
+%apply_patches
 # Until we get python3 support...
-sed -i -e 's,/bin/python,/bin/python2,g' py/sbin/*.py
+sed -i -e 's,/bin/python,%{__python2},g' py/sbin/*.py
 
 %install
-%makeinstall_std PYTHON=python2
+%makeinstall_std PYTHON=%{__python2}
 mkdir -p %{buildroot}/%{_bindir}
 ln -s %{_bindir}/consolehelper %{buildroot}/%{_bindir}/%{name}
 ln -s %{_datadir}/bash-completion/%{name} %{buildroot}/%{_sysconfdir}/bash_completion.d/%{name}
