@@ -3,7 +3,7 @@
 Summary:	Builds packages inside chroots
 Name:		mock-urpm
 Version:	1.3.10
-Release:	3
+Release:	4
 License:	GPLv2+
 Group:		Development/Other
 Source0:	https://abf.io/soft/%{name}/archive/%{name}-%{version}.tar.gz
@@ -36,7 +36,7 @@ Mock-urpm takes an SRPM and builds it in a chroot.
 %setup -q
 %apply_patches
 # Until we get python3 support...
-sed -i -e 's,/bin/python,%{__python2},g' py/sbin/*.py
+sed -i -e 's,/usr/bin/python,%{__python2},g' py/sbin/*.py
 
 %install
 %makeinstall_std PYTHON=%{__python2}
