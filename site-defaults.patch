@@ -1,0 +1,11 @@
+--- a/etc/mock-urpm/site-defaults.cfg	2012-07-11 17:40:34.000000000 +0400
++++ b/etc/mock-urpm/site-defaults.cfg	2013-10-01 11:10:48.645256655 +0400
+@@ -26,6 +26,8 @@
+ # config_opts['urpmi_config_dir'] = '/etc/urpmi/'
+ # config_opts['use_system_media'] = True
+ 
++config_opts['urpm_options']=" --wget --wget-options --auth-no-challenge"
++
+ # You can configure log format to pull from logging.ini formats of these names:
+ # config_opts['build_log_fmt_name'] = "unadorned"
+ # config_opts['root_log_fmt_name']  = "detailed"

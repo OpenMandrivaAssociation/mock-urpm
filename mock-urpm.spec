@@ -2,41 +2,40 @@
 
 Summary:	Builds packages inside chroots
 Name:		mock-urpm
-Version:	1.1.12
-Release:	31
+Version:	1.3.10
+Release:	0.1
 License:	GPLv2+
 Group:		Development/Other
-Source:		%{name}-%{version}.tar.gz
-Patch1:		mock-urpm.urpm_options.patch
-Patch2:         mock-urpm.test.patch
-Patch3:         mock-urpm.readd.patch
+Source0:	https://abf.io/soft/%{name}/archive/%{name}-%{version}.tar.gz
 URL:		http://wiki.rosalab.ru/en/index.php/Mock-urpm
+Patch0:		site-defaults.patch
+Patch1:		mock-urpm.loop-control.patch
+Patch2:		mock-urpm-umount-proc-when-cleaning-tmp.patch
 
+BuildRequires:	pkgconfig(python)
+BuildRequires:	shadow-utils
 BuildArch:	noarch
 Requires:	tar
 Requires:	pigz
 Requires:	python-ctypes
+Requires:	python-pexpect
 Requires:	python-decoratortools
 Requires:	usermode-consoleonly
-Requires:	shadow-utils
-Requires:	coreutils
+Requires:	python
 Requires:	python-rpm
 Requires:	rpm-build
-BuildRequires:	python-devel
-BuildRequires:	shadow-utils
-
+Requires(pre):	coreutils
+Requires(pre):	shadow-utils
 
 %description
 Mock-urpm takes an SRPM and builds it in a chroot.
 
 %prep
-%setup -q -n %{name}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%setup -q
+%apply_patches
 
 %install
-make install DESTDIR=%{buildroot}
+%makeinstall_std
 mkdir -p %{buildroot}/%{_bindir}
 ln -s %{_bindir}/consolehelper %{buildroot}/%{_bindir}/%{name}
 ln -s %{_datadir}/bash-completion/%{name} %{buildroot}/%{_sysconfdir}/bash_completion.d/%{name}
@@ -56,16 +55,12 @@ if [ $1 -eq 0 ]; then # complete removing
 fi
 
 %files
-#%defattr(-,root,root,-)
-
-# executables
 %{_sbindir}/%{name}
 %{_bindir}/%{name}
 
 #consolehelper and PAM
 %{_sysconfdir}/pam.d/%{name}
 %{_sysconfdir}/security/console.apps/%{name}
-
 
 # python stuff
 %dir %{python_sitelib}/%{modname}
