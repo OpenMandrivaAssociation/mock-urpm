@@ -1,9 +1,10 @@
 %define modname mock_urpm
+%define mockgid  135
 
 Summary:	Builds packages inside chroots
 Name:		mock-urpm
 Version:	1.3.10
-Release:	4
+Release:	5
 License:	GPLv2+
 Group:		Development/Other
 Source0:	https://abf.io/soft/%{name}/archive/%{name}-%{version}.tar.gz
@@ -46,7 +47,7 @@ ln -s %{_datadir}/bash-completion/%{name} %{buildroot}/%{_sysconfdir}/bash_compl
 
 %pre
 if [ $1 -eq 1 ]; then #first install
-    groupadd -r -f %{name} >/dev/null 2>&1 || :
+    groupadd -r -f %{name} -g %mockgid >/dev/null 2>&1 || :
     if [ ! -z `env|grep SUDO_USER` ]; then
 	usermod -a -G %{name} `env|grep SUDO_USER | cut -f2 -d=` >/dev/null 2>&1 || :
     fi
