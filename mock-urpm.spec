@@ -24,7 +24,7 @@ Requires:	python-decoratortools
 Requires:	usermode-consoleonly
 Requires:	python2
 Requires:	python-rpm
-Requires:	rpm-build
+Suggests:	rpm-build
 Requires(pre):	coreutils
 Requires(pre):	shadow
 
