@@ -4,7 +4,7 @@
 Summary:	Builds packages inside chroots
 Name:		mock-urpm
 Version:	1.3.10
-Release:	6
+Release:	7
 License:	GPLv2+
 Group:		Development/Other
 Source0:	https://abf.io/soft/%{name}/archive/%{name}-%{version}.tar.gz
@@ -27,8 +27,6 @@ Requires:	python-rpm
 Suggests:	rpm-build
 Requires(pre):	coreutils
 Requires(pre):	shadow
-
-
 
 %description
 Mock-urpm takes an SRPM and builds it in a chroot.
