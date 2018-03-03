@@ -1,0 +1,26 @@
+diff -Naur mock-urpm-1.3.10/py/mock_urpm/backend.py mock-urpm-1.3.10.tpg/py/mock_urpm/backend.py
+--- mock-urpm-1.3.10/py/mock_urpm/backend.py	2018-03-03 23:21:15.563240000 +0000
++++ mock-urpm-1.3.10.tpg/py/mock_urpm/backend.py	2018-03-03 23:22:34.456185394 +0000
+@@ -596,7 +596,6 @@
+                 self._urpmi_chroot(args, returnOutput=1)
+ 
+             # install actual build dependencies
+-            srpms = [x.replace(self.makeChrootPath(), '') for x in srpms]
+             _urpmi_and_check(['--buildrequires', '--auto'] + list(srpms))
+         finally:
+             self.uidManager.restorePrivs()
+@@ -907,12 +906,10 @@
+         #if cmd[0] == "--buildrequires":
+         #    urpmicmd[0] = self.builddep_path
+         #    cmdix = 1
+-#        urpmicmd.extend(('--root', self.makeChrootPath()))
++        urpmicmd.extend(('--root', self.makeChrootPath()))
++        urpmicmd.extend(('--urpmi-root', self.makeChrootPath()))
+ #        self.chrootpathx = self.makeChrootPath()
+-        urpmicmd.insert(0, self.makeChrootPath())
+-        urpmicmd.insert(0, '/usr/sbin/chroot')
+         print urpmicmd
+-#        urpmicmd.extend(('--urpmi-root', self.makeChrootPath()))
+         # TODO: urpmicmd.extend(('--urpmi-root', self.makeChrootPath()))
+ 
+         ###if not self.online:

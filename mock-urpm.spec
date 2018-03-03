@@ -4,7 +4,7 @@
 Summary:	Builds packages inside chroots
 Name:		mock-urpm
 Version:	1.3.10
-Release:	7
+Release:	8
 License:	GPLv2+
 Group:		Development/Other
 Source0:	https://abf.io/soft/%{name}/archive/%{name}-%{version}.tar.gz
@@ -12,8 +12,8 @@ URL:		http://wiki.rosalab.ru/en/index.php/Mock-urpm
 Patch0:		site-defaults.patch
 Patch1:		mock-urpm.loop-control.patch
 Patch2:		mock-urpm-umount-proc-when-cleaning-tmp.patch
-
-BuildRequires:	pkgconfig(python2)
+Patch3:		mock-urpm-1.3.10-do-not-use-urpmi-from-inside-chroot.patch
+#BuildRequires:	pkgconfig(python2)
 BuildRequires:	shadow
 BuildArch:	noarch
 Requires:	bsdtar
@@ -34,6 +34,7 @@ Mock-urpm takes an SRPM and builds it in a chroot.
 %prep
 %setup -q
 %apply_patches
+
 # Until we get python3 support...
 sed -i -e 's,/usr/bin/python,%{__python2},g' py/sbin/*.py
 
