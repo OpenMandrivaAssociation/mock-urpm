@@ -33,7 +33,7 @@ Mock-urpm takes an SRPM and builds it in a chroot.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 # Until we get python3 support...
 sed -i -e 's,/usr/bin/python,%{__python2},g' py/sbin/*.py
