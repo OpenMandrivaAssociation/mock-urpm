@@ -8,7 +8,7 @@ Release:	8
 License:	GPLv2+
 Group:		Development/Other
 Source0:	https://abf.io/soft/%{name}/archive/%{name}-%{version}.tar.gz
-URL:		http://wiki.rosalab.ru/en/index.php/Mock-urpm
+URL:		https://wiki.rosalab.ru/en/index.php/Mock-urpm
 Patch0:		site-defaults.patch
 Patch1:		mock-urpm.loop-control.patch
 Patch2:		mock-urpm-umount-proc-when-cleaning-tmp.patch
